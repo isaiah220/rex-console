@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#03090c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Rex" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+  <link rel="icon" href="icon-192.png" />
+  <title>Rex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="signin" class="screen hidden">
+    <div class="logo">REX</div>
+    <p class="muted">Operator console · sign in to talk to Rex</p>
+    <button id="signinBtn" class="primary">Email me a sign-in link</button>
+    <p id="signinMsg" class="muted small"></p>
+  </div>
+
+  <div id="app" class="screen hidden">
+    <header>
+      <div class="logo sm">REX</div>
+      <div id="status" class="pill"><span class="dot"></span><span id="statusText">ONLINE</span></div>
+    </header>
+
+    <section class="stage">
+      <canvas id="orb"></canvas>
+      <div id="state" class="state">tap & hold to talk</div>
+    </section>
+
+    <nav class="tabs">
+      <button data-tab="talk" class="on">Talk</button>
+      <button data-tab="queue">Queue <span id="qCount" class="badge">0</span></button>
+      <button data-tab="brief">Brief</button>
+      <button data-tab="activity">Activity</button>
+    </nav>
+
+    <section id="tab-talk" class="tab on">
+      <div id="transcript" class="transcript"></div>
+    </section>
+    <section id="tab-queue" class="tab"><div id="queue" class="list"></div></section>
+    <section id="tab-brief" class="tab">
+      <div class="card"><div class="k">REX'S MORNING READ <button id="playBrief" class="mini">▶ play</button></div><div id="briefText" class="brief">No brief yet.</div></div>
+    </section>
+    <section id="tab-activity" class="tab"><div id="feed" class="list"></div></section>
+
+    <footer>
+      <form id="chatForm">
+        <input id="chatInput" placeholder="Message Rex…" autocomplete="off" enterkeyhint="send" />
+        <button id="mic" type="button" class="mic" aria-label="Hold to talk">●</button>
+      </form>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
